@@ -17,6 +17,7 @@ public class RobotContainer {
       OperatorConstants.kDriverControllerPort);
   private final IndexerSubsystem indexer = new IndexerSubsystem();
   private final IntakeSubsystem intake = new IntakeSubsystem();
+  private final KickerSubsystem kicker = new KickerSubsystem();
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -27,12 +28,13 @@ public class RobotContainer {
 
     intake.setDefaultCommand(new RunCommand(() -> intake.intakeMotor.set(0), intake));
 
+    kicker.setDefaultCommand(new RunCommand(() -> kicker.kickerMotor.set(0), kicker));
   }
  
   private void configureBindings() {
     // TODO: Run shooter at 20 RPS on right trigger
     // TODO: Run intake at 70% power on left trigger
-    m_driverController.y().whileTrue(indexer.start());
+     m_driverController.y().whileTrue(indexer.start());
     // TODO: Run indexer at 70% power on y
     
     // TODO: Run kicker at 20% power on a

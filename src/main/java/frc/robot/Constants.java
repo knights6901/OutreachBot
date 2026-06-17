@@ -35,4 +35,14 @@ public final class Constants {
             .withNeutralMode(NeutralModeValue.Coast)
             .withInverted(InvertedValue.Clockwise_Positive));
   }
+
+  public static class KickerConstants {
+    public static final int kKickerId = 37;
+
+    public static final TalonFXConfiguration kConfig = new TalonFXConfiguration()
+        .withMotorOutput(new MotorOutputConfigs()
+            .withNeutralMode(NeutralModeValue.Coast)
+            .withInverted(InvertedValue.Clockwise_Positive));
+  } 
+  
 }
