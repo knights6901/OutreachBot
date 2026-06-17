@@ -38,6 +38,7 @@ public class RobotContainer {
     // TODO: Run indexer at 70% power on y
     
     // TODO: Run kicker at 20% power on a
+     m_driverController.a().whileTrue(kicker.start());
   }
 
   /**

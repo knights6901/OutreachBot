@@ -38,7 +38,7 @@ public final class Constants {
 
   public static class KickerConstants {
     public static final int kKickerId = 37;
-
+       public static final double Kickerspeed = 0.2; 
     public static final TalonFXConfiguration kConfig = new TalonFXConfiguration()
         .withMotorOutput(new MotorOutputConfigs()
             .withNeutralMode(NeutralModeValue.Coast)
