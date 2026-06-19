@@ -5,6 +5,7 @@
 package frc.robot;
 
 import com.ctre.phoenix6.configs.MotorOutputConfigs;
+import com.ctre.phoenix6.configs.Slot0Configs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
@@ -30,10 +31,15 @@ public final class Constants {
     public static final int kLeftShooterId = 35;
     public static final int kRightShooterId = 36;
 
+    public static final Slot0Configs Gains = new Slot0Configs()
+        .withKP(0.36901).withKI(0).withKD(0.0085)
+        .withKS(0).withKV(0.119);
+
     public static final TalonFXConfiguration kConfig = new TalonFXConfiguration()
         .withMotorOutput(new MotorOutputConfigs()
             .withNeutralMode(NeutralModeValue.Coast)
-            .withInverted(InvertedValue.Clockwise_Positive));
+            .withInverted(InvertedValue.Clockwise_Positive))
+        .withSlot0(Gains);
   }
 
   public static class KickerConstants {

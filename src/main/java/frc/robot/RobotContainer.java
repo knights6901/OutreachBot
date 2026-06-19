@@ -7,6 +7,7 @@ package frc.robot;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.subsystems.IndexerSubsystem;
 import frc.robot.subsystems.KickerSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
@@ -19,6 +20,7 @@ public class RobotContainer {
   private final IndexerSubsystem indexer = new IndexerSubsystem();
   private final IntakeSubsystem intake = new IntakeSubsystem();
   private final KickerSubsystem kicker = new KickerSubsystem();
+  private final ShooterSubsystem shooter = new ShooterSubsystem();
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -34,6 +36,7 @@ public class RobotContainer {
  
   private void configureBindings() {
     // TODO: Run shooter at 20 RPS on right trigger
+      m_driverController.rightTrigger().whileTrue(new RunCommand(() -> shooter.setShooterSpeed(20), shooter));
     // TODO: Run intake at 70% power on left trigger
      m_driverController.y().whileTrue(indexer.start());
     // TODO: Run indexer at 70% power on y
