@@ -4,11 +4,15 @@
 
 package frc.robot;
 
+import static edu.wpi.first.units.Units.RotationsPerSecond;
+
 import com.ctre.phoenix6.configs.MotorOutputConfigs;
 import com.ctre.phoenix6.configs.Slot0Configs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
+
+import edu.wpi.first.units.measure.AngularVelocity;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
@@ -43,12 +47,31 @@ public final class Constants {
   }
 
   public static class KickerConstants {
-    public static final int kKickerId = 37;
-       public static final double kKickerSpeed = 0.2; 
-    public static final TalonFXConfiguration kConfig = new TalonFXConfiguration()
+    public static final int Id = 37;
+    public static final double KickerSpeed = 0.2;
+
+    public static final TalonFXConfiguration Config = new TalonFXConfiguration()
         .withMotorOutput(new MotorOutputConfigs()
             .withNeutralMode(NeutralModeValue.Coast)
             .withInverted(InvertedValue.Clockwise_Positive));
-  } 
+  }
+
+  public static class IntakeConstants {
+    public static final int Id = 35;
+    public static final AngularVelocity Speed = RotationsPerSecond.of(67);
+
+    public static final TalonFXConfiguration Config = new TalonFXConfiguration()
+        .withMotorOutput(new MotorOutputConfigs()
+            .withNeutralMode(NeutralModeValue.Coast)
+            .withInverted(InvertedValue.Clockwise_Positive));
+  }
   
+  public static class IndexerConstants {
+    public static final int Id = 36;
+
+    public static final TalonFXConfiguration Config = new TalonFXConfiguration()
+        .withMotorOutput(new MotorOutputConfigs()
+            .withNeutralMode(NeutralModeValue.Coast)
+            .withInverted(InvertedValue.Clockwise_Positive));
+  }
 }

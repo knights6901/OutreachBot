@@ -10,8 +10,8 @@ import frc.robot.subsystems.KickerSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.commands.ShootCommand;
 
 public class RobotContainer {
   // Replace with CommandPS4Controller or CommandJoystick if needed
@@ -27,22 +27,17 @@ public class RobotContainer {
    */
   public RobotContainer() {
     configureBindings();
-    indexer.setDefaultCommand(new RunCommand(() -> indexer.motor.set(0), indexer));
 
-    intake.setDefaultCommand(new RunCommand(() -> intake.intakeMotor.set(0), intake));
+    indexer.setDefaultCommand(indexer.stop());
 
-    kicker.setDefaultCommand(new RunCommand(() -> kicker.kickerMotor.set(0), kicker));
+    intake.setDefaultCommand(intake.stop());
+
+    kicker.setDefaultCommand(kicker.stop());
   }
- 
+
   private void configureBindings() {
-    // TODO: Run shooter at 20 RPS on right trigger
-      m_driverController.rightTrigger().whileTrue(new RunCommand(() -> shooter.setShooterSpeed(20), shooter));
-    // TODO: Run intake at 70% power on left trigger
-     m_driverController.y().whileTrue(indexer.start());
-    // TODO: Run indexer at 70% power on y
-    
-    // TODO: Run kicker at 20% power on a
-     m_driverController.a().whileTrue(kicker.start());
+    m_driverController.rightTrigger().whileTrue(new ShootCommand(shooter, indexer, kicker));
+    m_driverController.leftTrigger().whileTrue(indexer.start());
   }
 
   /**
