@@ -4,9 +4,11 @@
 
 package frc.robot;
 
+import frc.robot.Constants.LEDConstants;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.subsystems.IndexerSubsystem;
 import frc.robot.subsystems.KickerSubsystem;
+import frc.robot.subsystems.LEDSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SlapdownSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -17,16 +19,17 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.ShootCommand;
 
 public class RobotContainer {
-  // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController = new CommandXboxController(
       OperatorConstants.kDriverControllerPort);
   private final CommandXboxController m_adminController = new CommandXboxController(
       OperatorConstants.kDriverControllerPort);
+  
   private final IndexerSubsystem indexer = new IndexerSubsystem();
   private final IntakeSubsystem intake = new IntakeSubsystem();
   private final KickerSubsystem kicker = new KickerSubsystem();
   private final ShooterSubsystem shooter = new ShooterSubsystem();
   private final SlapdownSubsystem slapdown = new SlapdownSubsystem();
+  private final LEDSubsystem led = new LEDSubsystem();
   
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -39,6 +42,8 @@ public class RobotContainer {
     intake.setDefaultCommand(intake.stop());
 
     kicker.setDefaultCommand(kicker.stop());
+
+    led.setDefaultCommand(led.runPattern(LEDConstants.ScrollRainbowPattern));
   }
 
   private void configureBindings() {
