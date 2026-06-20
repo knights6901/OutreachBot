@@ -22,7 +22,7 @@ public class RobotContainer {
   private final CommandXboxController m_driverController = new CommandXboxController(
       OperatorConstants.kDriverControllerPort);
   private final CommandXboxController m_adminController = new CommandXboxController(
-      OperatorConstants.kDriverControllerPort);
+      OperatorConstants.kAdminControllerPort);
   
   private final IndexerSubsystem indexer = new IndexerSubsystem();
   private final IntakeSubsystem intake = new IntakeSubsystem();

@@ -38,6 +38,7 @@ import edu.wpi.first.wpilibj.util.Color;
 public final class Constants {
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
+    public static final int kAdminControllerPort = 1;
   }
 
   public static class ShooterConstants {
@@ -66,7 +67,7 @@ public final class Constants {
   }
 
   public static class IntakeConstants {
-    public static final int Id = 35;
+    public static final int Id = 32;
     public static final AngularVelocity Speed = RotationsPerSecond.of(67);
 
     public static final TalonFXConfiguration Config = new TalonFXConfiguration()
@@ -76,7 +77,7 @@ public final class Constants {
   }
   
   public static class IndexerConstants {
-    public static final int Id = 36;
+    public static final int Id = 40;
 
     public static final TalonFXConfiguration Config = new TalonFXConfiguration()
         .withMotorOutput(new MotorOutputConfigs()
